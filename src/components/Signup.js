@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Signup = (props) => {
     const {showAlert} = props
-    const host="http://localhost:8000"
+    const host=process.env.REACT_APP_SERVER_BASE_URL
     let navigator = useNavigate()
     const [error,setError] = useState('')
     const [credential, setCredential] = useState({name:'',email:'',password:'',cnfpassword:''})
@@ -17,7 +17,6 @@ const Signup = (props) => {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json',
-                    'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNkMjM4YzEyYzhlOTE1MzZhMTQ2ZWRhIn0sImlhdCI6MTY3NDcyMTQ4M30.tO5wPIOlrGYj7yOI4jlc-erggE2y2rw--PmwtOo9MlI'
                 },
                 body: JSON.stringify(credential)
                 })
